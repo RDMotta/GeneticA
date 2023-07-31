@@ -1,6 +1,5 @@
-package com.rdm.genetica.domain
+package com.rdm.genetica.application.domain
 
-import com.rdm.genetica.model.Individual
 import java.math.BigDecimal
 
 class GeneticExecutor(val maxPopulation: Int, val listPoint: List<Double>, val listValues: List<BigDecimal>, val limit: Double) {

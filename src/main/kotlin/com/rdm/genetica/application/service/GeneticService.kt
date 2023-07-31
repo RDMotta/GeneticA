@@ -1,7 +1,7 @@
-package com.rdm.genetica.service
+package com.rdm.genetica.application.service
 
-import com.rdm.genetica.domain.GeneticExecutor
-import com.rdm.genetica.model.Activity
+import com.rdm.genetica.application.domain.GeneticExecutor
+import com.rdm.genetica.application.domain.Activity
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -31,7 +31,7 @@ class GeneticService {
 
         listActivity.forEach {
             listPoint.add(it.point)
-            listValue.add(it.value)
+            it.value.let { it1 -> listValue.add(it1) }
         }
 
         val limit = 5.0

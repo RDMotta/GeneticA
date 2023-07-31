@@ -1,6 +1,6 @@
 package com.rdm.genetica
 
-import com.rdm.genetica.service.GeneticService
+import com.rdm.genetica.application.service.GeneticService
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 

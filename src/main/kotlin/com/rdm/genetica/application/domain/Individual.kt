@@ -1,4 +1,4 @@
-package com.rdm.genetica.model
+package com.rdm.genetica.application.domain
 
 import java.math.BigDecimal
 import kotlin.math.roundToInt
