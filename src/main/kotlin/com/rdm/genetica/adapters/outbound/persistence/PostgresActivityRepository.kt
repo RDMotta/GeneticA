@@ -12,11 +12,9 @@ import java.util.*
 @Component
 @Primary
 class PostgresActivityRepository(val repository: SpringDataPostgresActivityRepository,
-                                 val modelmapper: ModelMapper): ActivityRepositoryPort {
+                                 val modelMapper: ModelMapper): ActivityRepositoryPort {
     override fun findAll(): MutableList<Activity> {
-        val list = mutableListOf<Activity>()
-        repository.findAll().forEach { list.add(convertToActivity(it)) }
-        return list
+        return repository.findAll().map { convertToActivity(it) }.toMutableList()
     }
 
     override fun findById(id: UUID): Optional<Activity> {
@@ -29,9 +27,14 @@ class PostgresActivityRepository(val repository: SpringDataPostgresActivityRepos
     }
 
     override fun save(activity: Activity): Activity {
-        val entity = modelmapper.map(activity, ActivityEntity::class.java)
+        val entity = modelMapper.map(activity, ActivityEntity::class.java)
         repository.save(entity)
         return activity
+    }
+
+    override fun delete(activity: Activity) {
+        val entity = modelMapper.map(activity, ActivityEntity::class.java)
+        repository.delete(entity)
     }
 
     fun convertToActivity(entity: ActivityEntity): Activity {
